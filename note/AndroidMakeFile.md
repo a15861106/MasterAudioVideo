@@ -61,6 +61,8 @@ LOCAL_STATIC_LIBRARIES := `third-lib`  #or LOCAL_SHARED_LIBRARY 
 include $(BUILD_SHARED_LIBRARY)   #如果编译静态库，需要Application.mk
 ```
 
+> android的mk使用静态库的顺序有要求，依赖的放在前面，比如libavformat必须放在libavcodec前面
+
 ##一些参数的含义
 1. LOCAL_EXPORT_C_INCLUDES 
 LOCAL_EXPORT_C_INCLUDES 定义确保了任何依赖这个预编译库的模块会自动在自己的 LOCAL_C_INCLUDES 变量中增加到这个预编译库的include目录的路径，从而能够找到其中的头文件。这样就不用再写一次LOCAL_C_INCLUDES 了。
