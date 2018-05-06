@@ -6,12 +6,9 @@ extern "C" {
 
 }
 
-#include <android/log.h>
 #include "./common/common.h"
 #include <android/bitmap.h>
 #include "com_weiersyuan_useffmpeg_RenderActivity.h"
-
-#define LOGI(FORMAT,...) __android_log_print(ANDROID_LOG_INFO,"weiersyuan",FORMAT,##__VA_ARGS__);
 
 JNIEXPORT jlong JNICALL Java_com_weiersyuan_useffmpeg_RenderActivity_open
         (JNIEnv * env, jclass clazz, jstring jFileName){
@@ -23,7 +20,7 @@ JNIEXPORT jlong JNICALL Java_com_weiersyuan_useffmpeg_RenderActivity_open
     }
 
     avi = AVI_open_input_file(cFileName, -1);
-    LOGI("enter Java_com_weiersyuan_useffmpeg_RenderActivity_open avi=%ld", avi);
+    LOGI("enter Java_com_weiersyuan_useffmpeg_RenderActivity_open avi=%p", avi);
     env->ReleaseStringUTFChars(jFileName, cFileName);
     if (avi == 0) {
         ThrowException(env, "java/io/IOException", AVI_strerror());
@@ -71,5 +68,9 @@ JNIEXPORT jboolean JNICALL Java_com_weiersyuan_useffmpeg_RenderActivity_render
         ThrowException(env, "java/io/IOException", "unable to lock bitmap");
     }
     LOGI("render");
-    return (jboolean) (frameSize > 0);
+    if (frameSize > 0) {
+        return JNI_TRUE;
+    } else {
+        return JNI_FALSE;
+    }
 }

@@ -30,8 +30,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        Intent intent = new Intent(MainActivity.this, RenderActivity.class);
-        intent.putExtra("id", view.getId());
+        Intent intent = new Intent();
+
+        switch (view.getId()) {
+            case R.id.btn1:
+                intent.setClass(MainActivity.this,  RenderActivity.class);
+                break;
+            case R.id.btn2:
+                intent.setClass(MainActivity.this, FFmpegGraphrcsActivity.class);
+                break;
+        }
         startActivity(intent);
     }
 }

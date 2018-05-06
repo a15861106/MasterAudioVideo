@@ -53,6 +53,14 @@ public class RenderActivity extends Activity implements SurfaceHolder.Callback {
         }
         surfaceHolder = surfaceView.getHolder();
         surfaceHolder.addCallback(this);
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                isPlaying.set(true);
+                new Thread(renderRunnable).start();
+            }
+        }, 3000);
     }
 
     @Override
@@ -73,8 +81,7 @@ public class RenderActivity extends Activity implements SurfaceHolder.Callback {
 
     @Override
     public void surfaceCreated(SurfaceHolder surfaceHolder) {
-        isPlaying.set(true);
-        new Thread(renderRunnable).start();
+
     }
 
     @Override

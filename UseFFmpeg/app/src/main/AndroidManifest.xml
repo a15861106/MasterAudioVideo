@@ -20,6 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".RenderActivity"/>
+        <activity android:name=".FFmpegGraphrcsActivity"/>
+
     </application>
 
 </manifest>

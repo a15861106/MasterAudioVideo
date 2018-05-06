@@ -65,10 +65,21 @@ include $(PREBUILT_SHARED_LIBRARY)
 #所有ffmpeg库
 include $(CLEAR_VARS)
 LOCAL_MODULE := avlib
-LOCAL_SRC_FILES := main.cpp render.cpp common/common.cpp
+LOCAL_CPP_EXTENSION += .cpp .cc
+
+
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/thirdparty/ffmpeg/include
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/thirdparty/avilib/include
-##-landroid参数 for native windows
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/libyuv/include
+
+LOCAL_SRC_FILES += main.cpp render.cpp common/common.cpp FFmpegGraphrcs.cpp
+#查找所有目录下面的文
+ALL_LIBYUV_SOURCE_FILE := $(wildcard $(LOCAL_PATH)/libyuv/source/*.cc)
+#找到的文件名中的$(LOCLA_PATH)路径给去掉
+ALL_LIBYUV_SOURCE_FILE := $(ALL_LIBYUV_SOURCE_FILE:$(LOCAL_PATH)/%=%)
+LOCAL_SRC_FILES += $(ALL_LIBYUV_SOURCE_FILE)
+
+#-landroid参数 for native windows
 LOCAL_LDLIBS := -llog -landroid -lz
 LOCAL_LDLIBS += -ljnigraphics #bitmap头文件
 # 这里太坑了，android的mk使用静态库的顺序有要求，依赖的放在前面，这里libavformat必须放在libavcodec前面
