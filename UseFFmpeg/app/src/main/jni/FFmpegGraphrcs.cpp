@@ -114,7 +114,7 @@ JNIEXPORT void JNICALL Java_com_weiersyuan_useffmpeg_FFmpegGraphrcsActivity_rend
             //unlock
             ANativeWindow_unlockAndPost(nativeWindow);
 
-            usleep(framerate/30);
+            usleep(1000/framerate);
 
         }
 
