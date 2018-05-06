@@ -13,6 +13,10 @@ android {
         ndk {
             abiFilters 'armeabi-v7a'
         }
+
+        sourceSets.main {
+            jniLibs.srcDir "src/main/libs"    // jniLib.srcDirs定义了Gradle在哪里寻找生成的so库文件
+        }
     }
     buildTypes {
         release {
