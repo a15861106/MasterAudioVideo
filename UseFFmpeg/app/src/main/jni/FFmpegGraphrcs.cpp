@@ -57,6 +57,9 @@ JNIEXPORT void JNICALL Java_com_weiersyuan_useffmpeg_FFmpegGraphrcsActivity_rend
 
     // 获取视频解码器
     AVCodecContext * pCodecCtx = pFormatCtx->streams[video_stream_index]->codec;
+   int framerate = pFormatCtx->streams[video_stream_index]->avg_frame_rate.num;
+    LOGI("frame rate is %d", framerate)
+
     AVCodec * pCodec = avcodec_find_decoder(pCodecCtx->codec_id);
     if (pCodec == NULL) {
         LOGE("can not decode")
@@ -90,7 +93,6 @@ JNIEXPORT void JNICALL Java_com_weiersyuan_useffmpeg_FFmpegGraphrcsActivity_rend
         len = avcodec_decode_video2(pCodecCtx, yuv_frame, &got_frame, packet);
 
         //Zero if no frame could be decompressed
-        //非零，正在解码
         if(got_frame){
             LOGI("解码%d帧",framecount++);
             //lock
@@ -109,11 +111,10 @@ JNIEXPORT void JNICALL Java_com_weiersyuan_useffmpeg_FFmpegGraphrcsActivity_rend
                        rgb_frame->data[0], rgb_frame->linesize[0],
                        pCodecCtx->width,pCodecCtx->height);
 
-
             //unlock
             ANativeWindow_unlockAndPost(nativeWindow);
 
-            usleep(1000/30 * 1000);
+            usleep(framerate/30);
 
         }
 
