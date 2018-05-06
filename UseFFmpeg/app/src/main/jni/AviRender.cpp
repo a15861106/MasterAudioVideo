@@ -10,17 +10,17 @@ extern "C" {
 #include <android/bitmap.h>
 #include "com_weiersyuan_useffmpeg_RenderActivity.h"
 
-JNIEXPORT jlong JNICALL Java_com_weiersyuan_useffmpeg_RenderActivity_open
+JNIEXPORT jlong JNICALL Java_com_weiersyuan_useffmpeg_AVIRenderActivity_open
         (JNIEnv * env, jclass clazz, jstring jFileName){
     avi_t * avi = 0;
     const char * cFileName = env->GetStringUTFChars(jFileName, 0);
-    LOGI("enter Java_com_weiersyuan_useffmpeg_RenderActivity_open jFileName=%s", cFileName);
+    LOGI("enter Java_com_weiersyuan_useffmpeg_AVIRenderActivity_open jFileName=%s", cFileName);
     if (cFileName == 0) {
         return (jlong)avi;
     }
 
     avi = AVI_open_input_file(cFileName, -1);
-    LOGI("enter Java_com_weiersyuan_useffmpeg_RenderActivity_open avi=%p", avi);
+    LOGI("enter Java_com_weiersyuan_useffmpeg_AVIRenderActivity_open avi=%p", avi);
     env->ReleaseStringUTFChars(jFileName, cFileName);
     if (avi == 0) {
         ThrowException(env, "java/io/IOException", AVI_strerror());
@@ -29,30 +29,30 @@ JNIEXPORT jlong JNICALL Java_com_weiersyuan_useffmpeg_RenderActivity_open
 
 }
 
-JNIEXPORT jint JNICALL Java_com_weiersyuan_useffmpeg_RenderActivity_getWidth
+JNIEXPORT jint JNICALL Java_com_weiersyuan_useffmpeg_AVIRenderActivity_getWidth
         (JNIEnv * env, jclass clazz, jlong avi) {
     return AVI_video_width((avi_t*)avi);
 }
 
 
-JNIEXPORT jint JNICALL Java_com_weiersyuan_useffmpeg_RenderActivity_getHeight
+JNIEXPORT jint JNICALL Java_com_weiersyuan_useffmpeg_AVIRenderActivity_getHeight
         (JNIEnv * env, jclass clazz, jlong avi) {
     return AVI_video_height((avi_t*)avi);
 }
 
 
-JNIEXPORT jdouble JNICALL Java_com_weiersyuan_useffmpeg_RenderActivity_getFrameRate
+JNIEXPORT jdouble JNICALL Java_com_weiersyuan_useffmpeg_AVIRenderActivity_getFrameRate
         (JNIEnv * env, jclass clazz, jlong avi) {
     return AVI_frame_rate((avi_t*)avi);
 }
 
 
-JNIEXPORT void JNICALL Java_com_weiersyuan_useffmpeg_RenderActivity_close
+JNIEXPORT void JNICALL Java_com_weiersyuan_useffmpeg_AVIRenderActivity_close
         (JNIEnv * env, jclass clazz, jlong avi) {
     AVI_close((avi_t*)avi);
 }
 
-JNIEXPORT jboolean JNICALL Java_com_weiersyuan_useffmpeg_RenderActivity_render
+JNIEXPORT jboolean JNICALL Java_com_weiersyuan_useffmpeg_AVIRenderActivity_render
         (JNIEnv * env, jobject clazz, jlong avi, jobject jBitmap) {
 
     char * frameBuffer;

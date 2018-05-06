@@ -12,7 +12,7 @@ extern "C" {
  * Method:    open
  * Signature: (Ljava/lang/String;)J
  */
-JNIEXPORT jlong JNICALL Java_com_weiersyuan_useffmpeg_RenderActivity_open
+JNIEXPORT jlong JNICALL Java_com_weiersyuan_useffmpeg_AVIRenderActivity_open
   (JNIEnv *, jclass, jstring);
 
 /*
@@ -20,7 +20,7 @@ JNIEXPORT jlong JNICALL Java_com_weiersyuan_useffmpeg_RenderActivity_open
  * Method:    getWidth
  * Signature: (J)I
  */
-JNIEXPORT jint JNICALL Java_com_weiersyuan_useffmpeg_RenderActivity_getWidth
+JNIEXPORT jint JNICALL Java_com_weiersyuan_useffmpeg_AVIRenderActivity_getWidth
   (JNIEnv *, jclass, jlong);
 
 /*
@@ -28,7 +28,7 @@ JNIEXPORT jint JNICALL Java_com_weiersyuan_useffmpeg_RenderActivity_getWidth
  * Method:    getHeight
  * Signature: (J)I
  */
-JNIEXPORT jint JNICALL Java_com_weiersyuan_useffmpeg_RenderActivity_getHeight
+JNIEXPORT jint JNICALL Java_com_weiersyuan_useffmpeg_AVIRenderActivity_getHeight
   (JNIEnv *, jclass, jlong);
 
 /*
@@ -36,7 +36,7 @@ JNIEXPORT jint JNICALL Java_com_weiersyuan_useffmpeg_RenderActivity_getHeight
  * Method:    getFrameRate
  * Signature: (J)D
  */
-JNIEXPORT jdouble JNICALL Java_com_weiersyuan_useffmpeg_RenderActivity_getFrameRate
+JNIEXPORT jdouble JNICALL Java_com_weiersyuan_useffmpeg_AVIRenderActivity_getFrameRate
   (JNIEnv *, jclass, jlong);
 
 /*
@@ -44,7 +44,7 @@ JNIEXPORT jdouble JNICALL Java_com_weiersyuan_useffmpeg_RenderActivity_getFrameR
  * Method:    close
  * Signature: (J)V
  */
-JNIEXPORT void JNICALL Java_com_weiersyuan_useffmpeg_RenderActivity_close
+JNIEXPORT void JNICALL Java_com_weiersyuan_useffmpeg_AVIRenderActivity_close
   (JNIEnv *, jclass, jlong);
 
 /*
@@ -52,7 +52,7 @@ JNIEXPORT void JNICALL Java_com_weiersyuan_useffmpeg_RenderActivity_close
  * Method:    render
  * Signature: (JLjava/lang/Object;)V
  */
-JNIEXPORT jboolean JNICALL Java_com_weiersyuan_useffmpeg_RenderActivity_render
+JNIEXPORT jboolean JNICALL Java_com_weiersyuan_useffmpeg_AVIRenderActivity_render
   (JNIEnv *, jobject, jlong, jobject);
 
 #ifdef __cplusplus

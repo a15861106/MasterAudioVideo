@@ -25,6 +25,11 @@ android {
             path 'src/main/jni/Android.mk'
         }
     }
+    sourceSets{
+        main{
+            jni.srcDirs=[]  // jni.srcDirs禁用通过Gradle来编译本地c/c++代码
+        }
+    }
 }
 
 dependencies {

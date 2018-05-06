@@ -72,7 +72,7 @@ LOCAL_C_INCLUDES += $(LOCAL_PATH)/thirdparty/ffmpeg/include
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/thirdparty/avilib/include
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/libyuv/include
 
-LOCAL_SRC_FILES += main.cpp render.cpp common/common.cpp FFmpegGraphrcs.cpp
+LOCAL_SRC_FILES += main.cpp AviRender.cpp common/common.cpp FFmpegGraphrcs.cpp
 #查找所有目录下面的文
 ALL_LIBYUV_SOURCE_FILE := $(wildcard $(LOCAL_PATH)/libyuv/source/*.cc)
 #找到的文件名中的$(LOCLA_PATH)路径给去掉

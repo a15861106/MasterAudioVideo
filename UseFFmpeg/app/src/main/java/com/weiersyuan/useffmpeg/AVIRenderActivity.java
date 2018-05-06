@@ -20,8 +20,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * Created by weiersyuan on 2018/5/5.
  */
 
-public class RenderActivity extends Activity implements SurfaceHolder.Callback {
-    private static final String TAG = "RenderActivity";
+public class AVIRenderActivity extends Activity implements SurfaceHolder.Callback {
+    private static final String TAG = "AVIRenderActivity";
     Handler handler = new Handler();
 
     private SurfaceView surfaceView;
