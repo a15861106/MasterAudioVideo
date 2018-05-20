@@ -72,7 +72,7 @@ LOCAL_C_INCLUDES += $(LOCAL_PATH)/thirdparty/ffmpeg/include
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/thirdparty/avilib/include
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/libyuv/include
 
-LOCAL_SRC_FILES += main.cpp AviRender.cpp common/common.cpp video.cpp audio.cpp
+LOCAL_SRC_FILES += main.cpp AviRender.cpp common/common.cpp video.cpp audio.cpp core/Thread.cpp
 #查找所有目录下面的文
 ALL_LIBYUV_SOURCE_FILE := $(wildcard $(LOCAL_PATH)/libyuv/source/*.cc)
 #找到的文件名中的$(LOCLA_PATH)路径给去掉
@@ -85,4 +85,5 @@ LOCAL_LDLIBS += -ljnigraphics #bitmap头文件
 # 这里太坑了，android的mk使用静态库的顺序有要求，依赖的放在前面，这里libavformat必须放在libavcodec前面
 LOCAL_STATIC_LIBRARIES := libavformat libavcodec libavfilter libavutil libfdk-aac libpostproc libswresample libswscale libvo-aacenc libx264
 LOCAL_SHARED_LIBRARIES := libavi
+LOCAL_CPPFLAGS += -std=c++11
 include $(BUILD_SHARED_LIBRARY)
