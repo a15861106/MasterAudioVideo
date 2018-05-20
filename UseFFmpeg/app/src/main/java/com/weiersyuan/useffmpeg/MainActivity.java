@@ -18,12 +18,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d(TAG, stringFromJNI());
-        findViewById(R.id.btn1).setOnClickListener(this);
-        findViewById(R.id.btn2).setOnClickListener(this);
-        findViewById(R.id.btn3).setOnClickListener(this);
-        findViewById(R.id.btn4).setOnClickListener(this);
-        findViewById(R.id.btn5).setOnClickListener(this);
 
+        findViewById(R.id.play_video).setOnClickListener(this);
+        findViewById(R.id.play_audio).setOnClickListener(this);
     }
 
     public native String stringFromJNI();
@@ -33,11 +30,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent();
 
         switch (view.getId()) {
-            case R.id.btn1:
-                intent.setClass(MainActivity.this,  AVIRenderActivity.class);
+            case R.id.play_video:
+                intent.setClass(MainActivity.this, VideoActivity.class);
                 break;
-            case R.id.btn2:
-                intent.setClass(MainActivity.this, FFmpegGraphrcsActivity.class);
+            case R.id.play_audio:
+                intent.setClass(MainActivity.this, AudioActivity.class);
                 break;
         }
         startActivity(intent);

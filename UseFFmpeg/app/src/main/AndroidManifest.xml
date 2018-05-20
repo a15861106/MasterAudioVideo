@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".AVIRenderActivity"/>
-        <activity android:name=".FFmpegGraphrcsActivity"/>
+        <activity android:name=".VideoActivity"/>
+        <activity android:name=".AudioActivity"/>
 
     </application>
 

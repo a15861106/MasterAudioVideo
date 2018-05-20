@@ -12,10 +12,10 @@ extern "C" {
  * Method:    render
  * Signature: ()V
  */
-JNIEXPORT void JNICALL Java_com_weiersyuan_useffmpeg_FFmpegGraphrcsActivity_render
+JNIEXPORT void JNICALL Java_com_weiersyuan_useffmpeg_VideoActivity_render
   (JNIEnv *, jobject, jstring, jobject);
 
-JNIEXPORT void JNICALL Java_com_weiersyuan_useffmpeg_FFmpegGraphrcsActivity_stop
+JNIEXPORT void JNICALL Java_com_weiersyuan_useffmpeg_VideoActivity_stop
         (JNIEnv *, jobject);
 
 #ifdef __cplusplus

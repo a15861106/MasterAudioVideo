@@ -21,13 +21,13 @@ extern "C" {
 #include "./libyuv/include/libyuv.h"
 }
 using namespace libyuv;
-#include "com_weiersyuan_useffmpeg_FFmpegGraphrcsActivity.h"
+#include "com_weiersyuan_useffmpeg_VideoActivity.h"
 
-static bool stop = false;
+bool stop = false;
 
-JNIEXPORT void JNICALL Java_com_weiersyuan_useffmpeg_FFmpegGraphrcsActivity_render
+JNIEXPORT void JNICALL Java_com_weiersyuan_useffmpeg_VideoActivity_render
         (JNIEnv *env, jobject jobj, jstring jfilepath, jobject surface){
-    LOGI("enter Java_com_weiersyuan_useffmpeg_FFmpegGraphrcsActivity_render")
+    LOGI("enter Java_com_weiersyuan_useffmpeg_VideoActivity_render")
     const char * cFilePath = env->GetStringUTFChars(jfilepath, NULL);
     av_register_all();
     //封装格式上下文
@@ -113,24 +113,21 @@ JNIEXPORT void JNICALL Java_com_weiersyuan_useffmpeg_FFmpegGraphrcsActivity_rend
 
             //unlock
             ANativeWindow_unlockAndPost(nativeWindow);
-
-            usleep(1000/framerate);
-
         }
 
         av_free_packet(packet);
     }
 
+    LOGI("end play...")
     ANativeWindow_release(nativeWindow);
     av_frame_free(&yuv_frame);
     avcodec_close(pCodecCtx);
     avformat_free_context(pFormatCtx);
 
     env->ReleaseStringUTFChars(jfilepath,cFilePath);
-
 }
 
-JNIEXPORT void JNICALL Java_com_weiersyuan_useffmpeg_FFmpegGraphrcsActivity_stop
+JNIEXPORT void JNICALL Java_com_weiersyuan_useffmpeg_VideoActivity_stop
         (JNIEnv * env, jobject jobj) {
     stop = true;
 }
